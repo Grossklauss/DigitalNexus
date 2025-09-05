@@ -308,25 +308,16 @@
         }
         
         .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.5s ease;
+            order: 1;
+            height: 200px;
         }
         
         .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: all 0.3s ease;
+             position: relative;
+            opacity: 1;
+            background: transparent;
+            padding: 15px 0;
+            order: 2;
         }
         
         .portfolio-item:hover .portfolio-overlay {
@@ -339,18 +330,16 @@
         
         .portfolio-overlay h3 {
             margin-bottom: 10px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            color: var(--white);
         }
         
         .portfolio-link {
-            display: inline-block;
-            padding: 8px 15px;
-            background: var(--neon-blue);
+           background: var(--neon-blue);
             color: var(--black);
-            border-radius: 5px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            padding: 10px;
         }
         
         .portfolio-link:hover {
@@ -544,11 +533,47 @@
             .services-grid, .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Modificações para o portfólio no mobile */
+    @media (max-width: 768px) {
+        .portfolio-item {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    /* Garantir que o hover ainda funcione no desktop */
+        @media (min-width: 769px) {
+            .portfolio-overlay {
+                position: absolute;
+                opacity: 0;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+                padding: 20px;
+            }
             
-            .portfolio-item {
-                height: 200px;
+            .portfolio-item:hover .portfolio-overlay {
+                opacity: 1;
+            }
+            
+            .portfolio-overlay h3 {
+                color: var(--white);
             }
         }
+    
+
+    /* Ajustes adicionais para telas muito pequenas */
+    @media (max-width: 576px) {
+        .portfolio-overlay {
+            padding: 10px 0;
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 1.1rem;
+        }
+    }
+    
     </style>
 </head>
 <body>
